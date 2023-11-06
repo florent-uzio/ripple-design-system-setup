@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ripple/design-system": "^3.9.1",
+    "@ripple/ui-helpers": "^2.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
