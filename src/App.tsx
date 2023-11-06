@@ -7,7 +7,7 @@ import {
   useThemeSetup,
 } from "@ripple/design-system"
 import { Header } from "./app-layout"
-import { ExampleButtons, ExampleToast } from "./components"
+import { ExampleButtons, ExampleForm, ExampleToast } from "./components"
 
 // global css for our render container to get the correct layout
 const localGlobalStyles = rippleTheme.globalCss({
@@ -30,6 +30,7 @@ export const App = () => {
         <Flex css={{ px: 5, py: 7 }} direction="column" gap={4}>
           <ExampleButtons />
           <ExampleToast />
+          <ExampleForm />
         </Flex>
         <ToastList placement="left" />
       </SheetProvider>
