@@ -17,6 +17,7 @@ export const App = () => {
   localGlobalStyles()
 
   return (
+    // @ts-expect-error Conflicts React 17 used in the DS and React 18 used in this repo. But works fine
     <ToastProvider>
       <Header />
       <Flex css={{ px: 5, py: 7 }} direction="column" gap={4}>
