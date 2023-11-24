@@ -6,6 +6,7 @@ import {
   Table,
   useCollectionControls,
 } from "@ripple/design-system"
+import { useQuery } from "@tanstack/react-query"
 
 type Response = {
   body: string
@@ -40,35 +41,46 @@ const options: CollectionControlsCustomOptions = {
   },
 }
 
+type DataResponse = { data: Response[]; page: { totalElements: string } }
+
 export const ExampleList = () => {
   // const { controlProps } = usePaginationControls()
+
+  const fetchPosts = async () => {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts")
+    return response.json()
+  }
+
   const fetchControlledData = async ({ pagination }: Controls) => {
-    // const originalData = Array.from({ length: 100 }).map((_, i) => {
-    //   return { body: `body-${i}`, title: `title-${i}`, id: i, userId: i }
+    // const result: Response[] =
+
+    // const response = await fetch("https://jsonplaceholder.typicode.com/posts").then((response) => {
+    //   return response.json()
     // })
 
-    const result: Response[] = await fetch("https://jsonplaceholder.typicode.com/posts").then(
-      (response) => response.json(),
-    )
+    const { data: response = [] } = useQuery({ queryKey: ["posts"], queryFn: fetchPosts })
 
-    const data = result.slice(
+    const data = response.slice(
       pagination.pageIndex * pagination.pageSize,
       pagination.pageSize * (pagination.pageIndex + 1),
     )
 
-    const response = {
+    const resp = {
       data,
       page: {
-        totalElements: result.length,
+        totalElements: response.length,
       },
     }
-    // console.log(response)
-    return response
+    console.log(resp)
+    return resp
   }
+
+  const fetchControlledData2 = ({ pagination }: Controls) => {}
 
   const { rows, controls } = useCollectionControls(
     {
-      fetcher: (controls) => fetchControlledData(controls), //withControls(fetchControlledData),
+      // fetcher: withControls(fetchControlledData), //withControls(fetchControlledData),
+      query: () => useQuery({ queryKey: ["posts"], queryFn: fetchPosts }),
       columns: [
         { accessorKey: "body" },
         { accessorKey: "id" },
