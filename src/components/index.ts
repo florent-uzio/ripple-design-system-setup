@@ -1,5 +1,6 @@
 export * from "./example-buttons"
 export * from "./example-form"
 export * from "./example-popover"
+export * from "./example-table-pagination"
 export * from "./example-toast"
 export * from "./login"

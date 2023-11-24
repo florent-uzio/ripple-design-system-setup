@@ -13,6 +13,7 @@ import {
   ExampleForm,
   ExampleLogin,
   ExamplePopover,
+  ExampleTablePagination,
   ExampleToast,
 } from "./components"
 
@@ -51,6 +52,7 @@ export const App = () => {
         <DropdownField.Option value="popover">Popover</DropdownField.Option>
         <DropdownField.Option value="toast">Toast</DropdownField.Option>
         <DropdownField.Option value="login">Login</DropdownField.Option>
+        <DropdownField.Option value="table">Table + Pagination</DropdownField.Option>
       </DropdownField>
 
       <Flex css={{ px: 5 }} direction="column" gap={4}>
@@ -59,6 +61,7 @@ export const App = () => {
         {value === "form" && <ExampleForm />}
         {value === "popover" && <ExamplePopover />}
         {value === "login" && <ExampleLogin />}
+        {value === "table" && <ExampleTablePagination />}
       </Flex>
       <ToastList placement="left" />
     </ToastProvider>
