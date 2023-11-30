@@ -7,10 +7,10 @@ export const CompanyTabs = () => {
   return (
     // @ts-expect-error React 18 issues
     <TabNav>
-      <TabNav.Tab to={`/company/${companyId}`}>Overview</TabNav.Tab>
-      <TabNav.Tab to={`/company/${companyId}/contacts`} end={true}>
-        Contacts
+      <TabNav.Tab to={`/company/${companyId}`} end={true}>
+        Overview
       </TabNav.Tab>
+      <TabNav.Tab to={`/company/${companyId}/contacts`}>Contacts</TabNav.Tab>
     </TabNav>
   )
 }
